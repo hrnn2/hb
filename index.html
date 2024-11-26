@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quiz Interativo</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google tag (gtag.js) -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Interativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-664873255">
 </script>
 <script>
@@ -35,21 +37,22 @@ function gtag_report_conversion(url) {
   return false;
 }
 </script>
-
-  </head>
-  <body>
-    <style>
-      .box {
-        background: linear-gradient(45deg, #F3F5FF, #BDE6FF);
-        box-shadow: 0px 4px 11px #0000002e;
-        border-radius: 10px;
-        border: 1px solid #ffffff;
-        min-height: 55px;
-        cursor: pointer;
-        line-height: 27px;
-      }
-      .hidden { display: none; }
-      @keyframes pulse {
+  <style>
+    body{
+      font-family: 'Poppins';
+    }
+    .box {
+      background: linear-gradient(45deg, #F3F5FF, #BDE6FF);
+      box-shadow: 0px 4px 11px #0000002e;
+      border-radius: 10px;
+      border: 1px solid #ffffff;
+      min-height: 55px;
+      cursor: pointer;
+      line-height: 21px;
+      font-size: 17px;
+    }
+    .box2{border: 1px solid rgba(0, 123, 255, 0.7);}
+    @keyframes pulse {
   0% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
@@ -65,114 +68,187 @@ function gtag_report_conversion(url) {
 }
 
 .btn-pulse {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
-  transition: background-color 0.3s;
+  background: linear-gradient(323deg, #54ff11, #ffffff);
+    color: #000000;
+    border: 4px solid #fff;
+    width: 90%;
+    border-radius: 19px;
+    padding: 10px 15px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    transition: background-color 0.3s;
+    display: flex
+;
+    align-items: center;
 }
+.hidden { display: none; }
 
 .btn-pulse:hover {
-  background-color: #0056b3;
+  background: linear-gradient(120deg, #54ff11, #ffffff);
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.5s forwards;
 }
 
-    </style>
-    
-    <section class="bg-dark row justify-content-center align-items-center py-2">
-      <div class="col-auto"><img src="hb_logo.webp" alt=""></div>
-      <div class="col-auto ps-0 text-white lh-1">
-        <h2 class="mb-0">Hernan Batista</h2>
-        <p class="mb-0 fst-italic">Especialista</p>
-      </div>
-    </section>
-    <div class="container text-center mt-3">
-        <p class="lead lh-1 pb-2 mb-0">Por favor, responda algumas perguntas para que possamos entender melhor o seu caso de forma personalizada</p>
-    </div>
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    <div class="container text-center py-3">
-      <!-- <p id="question" class="lead lh-1 pb-2">Por favor, responda algumas perguntas para que possamos entender melhor o seu caso de forma personalizada.</p> -->
-      <div data-aos="fade-up" id="question" class="col box p-2 lh-1 fs-6 fw-semibold">Qual é o principal objetivo que você gostaria de alcançar com nossas estratégias de marketing digital para o seu negócio?</div>
-      <div data-aos="fade-up" data-aos-duration="2000" id="answers" class="col">
-        <!-- As respostas de cada pergunta aparecerão aqui -->
-      </div>
+.fade-out {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <section class="bg-dark row justify-content-center align-items-center py-2">
+    <div class="col-auto"><img src="hb_logo.webp" alt=""></div>
+    <div class="col-auto ps-0 text-white lh-1">
+      <h2 class="mb-0">Hernan Batista</h2>
+      <p class="mb-0 fst-italic"><small>Especialista em Marketing Digital</small></p>
+    </div>
+  </section>
+
+  <!-- Textos introdutórios -->
+  <div id="intro" class="container text-center mt-3">
+    <p class="fw-semibold fs-5 mb-1">Responda 4 Perguntas Rápidas</p>
+    <p class="lh-1 pb-2 mb-0"><small>Para que possamos entender melhor o seu caso de forma personalizada</small></p>
+    <hr class="mb-1">
+  </div>
+
+  <!-- Barra de progresso -->
+  <div id="progress-container" class="container mt-3 hidden"></div>
+
+  <!-- Perguntas e respostas -->
+  <div class="container text-center py-3">
+    <p id="question" class="col box box2 p-2 fw-semibold"></p>
+    <p id="intro2" class="fs-6 mt-1">Selecione apertando em uma das opções abaixo</p>
+    <div data-aos-duration="1000" id="answers" class="col"></div>
+
+    <!-- Botão do WhatsApp -->
+    <div id="whatsapp" class="hidden py-3 justify-content-center">
+      <a id="whatsapp-link" onclick="gtag_report_conversion(whatsappLink.href)" class="btn btn-success btn-pulse lh-1">
+        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_1_204)">
+          <path d="M24.6518 4.21598C23.3225 2.87381 21.7393 1.80978 19.9945 1.08596C18.2496 0.362132 16.3781 -0.00699774 14.4891 0.000100458C6.57394 0.000100458 0.12325 6.44898 0.116 14.366C0.116 16.9017 0.779375 19.3685 2.03181 21.5525L0 29.0001L7.61975 27.0027C9.72676 28.1523 12.0889 28.7537 14.4891 28.7518H14.4964C22.4134 28.7518 28.8623 22.3029 28.8695 14.3787C28.8711 12.4901 28.4991 10.62 27.775 8.87581C27.0508 7.13165 25.9906 5.54798 24.6518 4.21598ZM14.4891 26.3194C12.3489 26.3177 10.2483 25.7419 8.40638 24.6519L7.97138 24.3909L3.451 25.5763L4.65813 21.1665L4.37538 20.7115C3.17878 18.809 2.54592 16.6063 2.55019 14.3587C2.55019 7.7866 7.90975 2.42523 14.4964 2.42523C16.0655 2.42241 17.6197 2.73022 19.0694 3.33092C20.519 3.93161 21.8354 4.8133 22.9426 5.92516C24.0535 7.03287 24.9342 8.34946 25.5339 9.79907C26.1337 11.2487 26.4407 12.8026 26.4371 14.3714C26.4299 20.9671 21.0703 26.3194 14.4891 26.3194ZM21.0413 17.3765C20.6843 17.1971 18.9207 16.3289 18.589 16.2057C18.2591 16.0879 18.0181 16.0262 17.7824 16.3851C17.5414 16.7422 16.8526 17.556 16.646 17.7898C16.4394 18.0309 16.2255 18.058 15.8666 17.8804C15.5096 17.6992 14.3514 17.3222 12.9811 16.0951C11.9118 15.1435 11.1958 13.9654 10.9819 13.6084C10.7753 13.2495 10.962 13.0574 11.1414 12.8779C11.2991 12.7184 11.4985 12.4574 11.6779 12.2508C11.8592 12.0442 11.919 11.8919 12.0368 11.6527C12.1546 11.4098 12.0984 11.2032 12.0096 11.0237C11.919 10.8443 11.2031 9.07348 10.9004 8.35935C10.6104 7.65429 10.3149 7.75216 10.0938 7.7431C9.88719 7.73041 9.64613 7.73041 9.40506 7.73041C9.22304 7.73505 9.04394 7.7772 8.87895 7.85423C8.71397 7.93127 8.56666 8.04152 8.44625 8.1781C8.11638 8.53698 7.19381 9.40516 7.19381 11.176C7.19381 12.9468 8.48069 14.6487 8.66194 14.8898C8.83956 15.1309 11.1886 18.754 14.7936 20.3128C15.6455 20.6844 16.3161 20.9037 16.8399 21.0704C17.7009 21.3459 18.4784 21.3042 19.0983 21.2154C19.7871 21.1103 21.2208 20.3454 21.5234 19.5062C21.8207 18.6652 21.8207 17.9475 21.7301 17.797C21.6413 17.6448 21.4002 17.556 21.0413 17.3765Z" fill="black"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_1_204">
+          <rect width="29" height="29" fill="white"/>
+          </clipPath>
+          </defs>
+          </svg>
+          
+        Enviar minhas respostas e iniciar atendimento
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "Qual é o principal objetivo que você gostaria de alcançar com nossas estratégias de marketing digital para o seu negócio?",
+        answers: ["Aumentar as vendas", "Fortalecer a marca e crescer nas redes sociais", "Melhorar meu retorno sobre investimento em anúncios"]
+      },
+      {
+        question: "Qual é o canal mais importante para o seu negócio atualmente?",
+        answers: ["Vendas físicas", "Site ou loja virtual", "Redes sociais", "Ainda não sei"]
+      },
+      {
+        question: "Você já investiu em marketing digital antes?",
+        answers: ["Sim, frequentemente", "Sim, mas não deu certo", "Não, nunca"]
+      },
+      {
+        question: "Qual é o tamanho da sua empresa?",
+        answers: ["Microempresa", "Pequena empresa", "Média ou grande empresa"]
+      }
+    ];
+
+    let currentQuestion = 0;
+    const userResponses = [];
+    const questionElement = document.getElementById("question");
+    const answersElement = document.getElementById("answers");
+    const progressContainer = document.getElementById("progress-container");
+    const intro = document.getElementById("intro");
+    const intro2 = document.getElementById("intro2");
+    const whatsappSection = document.getElementById("whatsapp");
+    const whatsappLink = document.getElementById("whatsapp-link");
+
+    function renderQuestion() {
+  if (currentQuestion < quizData.length) {
+    const { question, answers } = quizData[currentQuestion];
+
+    // Adicionar animação de saída
+    questionElement.classList.add("fade-out");
+    answersElement.classList.add("fade-out");
+
+    setTimeout(() => {
+
+    questionElement.textContent = question;
+    answersElement.innerHTML = answers.map(answer => 
+      `<div class="box fw-semibold lh-1 p-2 mt-2 d-flex justify-content-center align-items-center" onclick="selectAnswer('${answer}')">${answer}</div>`
+    ).join("");
+
+      // Adicionar animação de entrada
+      questionElement.classList.remove("fade-out");
+      questionElement.classList.add("fade-in");
+      answersElement.classList.remove("fade-out");
+      answersElement.classList.add("fade-in");
+
+    if (currentQuestion > 0) {
+      intro.classList.add("hidden");
+      intro2.classList.add("hidden");
+      progressContainer.classList.remove("hidden");
+      const progress = ((currentQuestion / quizData.length) * 100).toFixed(0);
+      progressContainer.innerHTML = `
+        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-primary text-white" style="width: ${progress}%">${progress}%</div>
+        </div>`;
+      }
+
+    },500);
+
+  } else {
+    // Mostrar barra de progresso em 100%
+    progressContainer.innerHTML = `
+      <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar bg-primary text-white" style="width: 100%">100%</div>
+      </div>`;
       
-      <div id="whatsapp" class="hidden py-3">
-        <a id="whatsapp-link" href="#" class="btn btn-success btn-pulse" onclick="gtag_report_conversion(whatsappLink.href)">Confirmar e enviar no Whatsapp</a>
-      </div>
-    </div>
-    
-    <script>
-      // Perguntas e respostas
-      const quizData = [
-        {
-          question: "Qual é o principal objetivo que você gostaria de alcançar com nossas estratégias de marketing digital para o seu negócio?",
-          answers: ["Aumentar vendas", "Expandir alcance da marca", "Melhorar relacionamento com clientes"]
-        },
-        {
-          question: "Qual é o maior desafio que você enfrenta atualmente em seu negócio?",
-          answers: ["Baixa conversão", "Pouca visibilidade", "Falta de engajamento"]
-        },
-        {
-          question: "Você já investiu em marketing digital antes?",
-          answers: ["Sim, frequentemente", "Sim, mas não deu certo", "Não, nunca"]
-        },
-        {
-          question: "Qual é o tamanho da sua empresa?",
-          answers: ["Microempresa", "Pequena empresa", "Média ou grande empresa"]
-        }
-      ];
+    // Exibir mensagem final
+    questionElement.textContent = "Obrigado por responder! Agora podemos elaborar a estratégia correta para o seu tipo de negócio. Clique no botão abaixo para enviar suas respostas no meu Whatsapp.";
+    answersElement.classList.add("hidden");
+    // whatsappSection.classList.remove("hidden");
+    whatsappSection.classList.add("d-flex");
+    const message = `Olá! Gostaria de saber mais. Minhas respostas ao questionário: ${userResponses.join(", ")}`;
+    whatsappLink.href = `https://wa.me/5571991622068?text=${encodeURIComponent(message)}`;
+  }
+}
 
-      // Armazenar respostas do usuário
-      const userResponses = [];
-      let currentQuestion = 0;
-
-      // Elementos DOM
-      const questionElement = document.getElementById("question");
-      const answersElement = document.getElementById("answers");
-      const whatsappSection = document.getElementById("whatsapp");
-      const whatsappLink = document.getElementById("whatsapp-link");
-
-      // Renderizar pergunta e respostas
-      function renderQuestion() {
-        if (currentQuestion < quizData.length) {
-          const { question, answers } = quizData[currentQuestion];
-          questionElement.textContent = question;
-          answersElement.innerHTML = answers
-            .map(
-              (answer, index) =>
-                `<div class="box p-2 mt-2" onclick="selectAnswer('${answer}')">${answer}</div>`
-            )
-            .join("");
-        } else {
-          // Mostrar botão do WhatsApp
-          questionElement.textContent = "Obrigado por responder! Agora fica bem mais fácil elaborar a estratégia correta para o seu tipo de negócio.";
-          answersElement.classList.add("hidden");
-          whatsappSection.classList.remove("hidden");
-          const whatsappMessage = `Olá! Minhas respostas foram: ${userResponses.join(", ")}`;
-          const whatsappNumber = "5571991622068";
-          whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        }
-      }
-
-      // Selecionar resposta e avançar
-      function selectAnswer(answer) {
-        userResponses.push(answer);
-        currentQuestion++;
-        renderQuestion();
-      }
-
-      // Inicializar quiz
+    function selectAnswer(answer) {
+      userResponses.push(answer);
+      currentQuestion++;
       renderQuestion();
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-      </script>
-  </body>
+    }
+
+    renderQuestion();
+  </script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
 </html>
